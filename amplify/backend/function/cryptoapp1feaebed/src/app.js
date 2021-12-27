@@ -32,7 +32,15 @@ app.use(function(req, res, next) {
 
 app.get('/coins', function(req, res) {
   // Add your code here
-  res.json({success: 'get call succeed!', url: req.url});
+  const coins = [
+    { name: 'Bitcoin', symbol: 'BTC', price_usd: "10000" },
+    { name: 'Ethereum', symbol: 'ETH', price_usd: "400" },
+    { name: 'Litecoin', symbol: 'LTC', price_usd: "150" }
+  ]
+
+  res.json({
+    coins
+  })
 });
 
 app.get('/coins/*', function(req, res) {
