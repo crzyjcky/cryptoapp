@@ -6,10 +6,17 @@ import '@aws-amplify/ui-react/styles.css'
 import './App.css'
 
 function App({ isPassedToWithAuthenticator, signOut, user }) {
+  const [input, updateInput] = useState({ limit: 5, start: 0 })
+
+  function updateInputValues(type, value) {
+    updateInput({ ...input, [type]: value })
+  }
+
   const [coins, updateCoins] = useState([])
 
   async function fetchCoins() {
-    const data = await API.get('cryptoapi', '/coins')
+    const { limit, start } = input
+    const data = await API.get('cryptoapi', `/coins?limit=${limit}&start=${start}`)
     updateCoins(data.coins)
   }
 
@@ -19,6 +26,16 @@ function App({ isPassedToWithAuthenticator, signOut, user }) {
   
   return (
     <div className="App">
+
+      <input
+        onChange={e => updateInputValues('limit', e.target.value)}
+        placeholder="limit"
+        ></input>
+      <input
+        onChange={e => updateInputValues('start', e.target.value)}
+        placeholder="start"
+        />
+      <button onClick={fetchCoins}>Fetch Coins</button>
       {
         coins.map((coin, index) => (
           <div key={index}>

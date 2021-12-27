@@ -24,7 +24,7 @@
       "function": {
         "cryptoapp1feaebed": {
           "deploymentBucketName": "amplify-cryptoapp-dev-210248-deployment",
-          "s3Key": "amplify-builds/cryptoapp1feaebed-4141614a71624364374f-build.zip"
+          "s3Key": "amplify-builds/cryptoapp1feaebed-6e396b6f50705979414b-build.zip"
         }
       }
     }
